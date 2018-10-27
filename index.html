@@ -56,11 +56,6 @@ function bracketBalance (string) {
 		']' : '[',
 		')'	: '('
 	};
-	let inverseBrackets = {
-		'{' : '}',
-		'[' : ']',
-		'('	: ')'
-	};
 	let open = Object.values(brackets);
 	let lastBracket;
     for(let i = 0; i < string.length; i++) {
@@ -78,6 +73,46 @@ function bracketBalance (string) {
 	return stack.length === 0;
 }
 console.log(bracketBalance(string));
+
+
+const treeExamp = {
+	v: 1,
+	c: [
+		{
+			v: 2,
+			c: [
+				{
+					v: 3
+				},
+				{
+					v: 3.2
+				}
+			]
+		},
+		{
+			v: 3
+		}
+	]
+};
+
+let dfsResult = [];
+let bsfResult = [];
+
+function goDeep (tree) {
+	if(tree) {
+		if (tree.c) {
+			for(let i = 0; i< tree.c.length; i++)
+				goDeep(tree.c[i]);
+		}
+		dfsResult.push(tree.v);
+	}
+}
+
+() => {
+	goDeep(treeExamp);
+	console.log("Обход в глубину", dfsResult);
+}
+
 </script>
 
 </html>
