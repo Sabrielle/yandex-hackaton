@@ -127,7 +127,7 @@ function init() {
 	goWide(treeExamp);
 	console.log("Обход в ширину", bfsResult);
 
-	let primes = [2];
+	let primes = [];
 
 	function getPrimeNumbers (number) {
 		let sqrtFromNumber = Math.sqrt(number);
@@ -143,6 +143,7 @@ function init() {
 				primes.push(i);
 			}
 		}
+		if(number >= 2) primes.unshift(2);
 	}
 	getPrimeNumbers(1000);
 	console.log("Все простые до 1000:", primes);
