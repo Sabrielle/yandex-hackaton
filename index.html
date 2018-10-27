@@ -95,23 +95,40 @@ const treeExamp = {
 	]
 };
 
-let dfsResult = [];
-let bsfResult = [];
 
-function goDeep (tree) {
-	if(tree) {
-		if (tree.c) {
-			for(let i = 0; i< tree.c.length; i++)
-				goDeep(tree.c[i]);
+function init() {
+	let dfsResult = [];
+	let bfsResult = [];
+	let queue = [];
+
+	function goDeep (tree) {
+		if(tree) {
+			if (tree.c) {
+				for(let i = 0; i< tree.c.length; i++)
+					goDeep(tree.c[i]);
+			}
+			dfsResult.push(tree.v);
 		}
-		dfsResult.push(tree.v);
 	}
-}
 
-() => {
+	function goWide (tree) {
+		queue.push(tree);
+		if(queue.length)
+			for(let i = 0; i < queue.length; i++) {
+				if (queue[i].c) {
+					[].push.apply(queue, queue[i].c);
+				}
+				bfsResult.push(queue[i].v);
+			}
+	}
+
 	goDeep(treeExamp);
 	console.log("Обход в глубину", dfsResult);
+	goWide(treeExamp);
+	console.log("Обход в ширину", bfsResult);
 }
+
+init();
 
 </script>
 
