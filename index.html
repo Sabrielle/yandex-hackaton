@@ -25,7 +25,24 @@ function bubbleSort (array) {
 	}
 	return sortedArray;
 }
-console.log(bubbleSort(unsortedArray));
+const sorted = bubbleSort(unsortedArray);
+console.log(sorted);
+
+function binarySearch(element, array) {
+	if(array.indexOf(element) === -1) return -1;
+	let i = 0;
+	let j = array.length;
+	let index = 0;                                 
+	while ( i < j ) {
+		index = Math.floor((i+j)/2);
+		if (array[index] === element) return index;
+		if (element < array[index]) j = index;
+		else i = index + 1;
+	}
+	
+	return -1;
+}
+console.log("Элемент 6 с индексом: ", binarySearch(6, sorted));
 </script>
 
 </html>
