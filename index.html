@@ -9,7 +9,7 @@
 
 </body>
 <script>
-const unsortedArray = [1, 10, 35, 12, 4, 8, 9, 21, 6];
+const unsortedArray = [14, 10, 35, 12, 10, 4, 10, 8, 25, 21, 10, 6];
 function bubbleSort (array) {
 	let sortedArray = array;
 	for(let i = 0; i < sortedArray.length; i++) {
@@ -35,11 +35,18 @@ function binarySearch(element, array) {
 	let index = 0;                                 
 	while ( i < j ) {
 		index = Math.floor((i+j)/2);
-		if (array[index] === element) return index;
+		if (array[index] === element) {
+			if(index > 0 && array[index - 1] === element) { 
+				for(let k = index - 1; k > 0; k--)
+					if (array[k] === element) continue;
+					else return k+1; 
+			}
+			else return index;
+		}
 		if (element < array[index]) j = index;
 		else i = index + 1;
 	}
-	
+
 	return -1;
 }
 console.log("Элемент 6 с индексом: ", binarySearch(6, sorted));
