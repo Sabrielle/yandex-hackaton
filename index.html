@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+</head>
+
+<body>
+
+</body>
+<script>
+const unsortedArray = [1, 10, 35, 12, 4, 8, 9, 21, 6];
+function bubbleSort (array) {
+	let sortedArray = array;
+	for(let i = 0; i < sortedArray.length; i++) {
+		let min = sortedArray[i];
+		for(let j = i + 1; j <  sortedArray.length; j++) {
+			if (sortedArray[j] < min) {
+				let mm = sortedArray[i];
+				min = sortedArray[j];
+				sortedArray[i] = min;
+				sortedArray[j] = mm;
+			}
+		}
+	}
+	return sortedArray;
+}
+console.log(bubbleSort(unsortedArray));
+</script>
+
+</html>
