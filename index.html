@@ -47,6 +47,37 @@ function binarySearch(element, array) {
 }
 console.log("Элемент 6 с индексом: ", binarySearch(6, sorted));
 
+const string = "a1(bc){hhh[ggg[(mm)}}";
+
+function bracketBalance (string) {
+	let stack = [];
+	let brackets = {
+		'}' : '{',
+		']' : '[',
+		')'	: '('
+	};
+	let inverseBrackets = {
+		'{' : '}',
+		'[' : ']',
+		'('	: ')'
+	};
+	let open = Object.values(brackets);
+	let lastBracket;
+    for(let i = 0; i < string.length; i++) {
+		let char = string[i]; 
+		let lastBracket;
+		let closeBracket = brackets[char];
+		if(open.indexOf(char) > - 1)  {
+			stack.push(char);
+		} else if(closeBracket) {
+			if( !stack.length || stack.pop() !== closeBracket) {
+				return false;
+			} 
+		}
+	}
+	return stack.length === 0;
+}
+console.log(bracketBalance(string));
 </script>
 
 </html>
