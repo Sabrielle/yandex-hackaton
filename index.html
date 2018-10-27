@@ -126,6 +126,26 @@ function init() {
 	console.log("Обход в глубину", dfsResult);
 	goWide(treeExamp);
 	console.log("Обход в ширину", bfsResult);
+
+	let primes = [2];
+
+	function getPrimeNumbers (number) {
+		let sqrtFromNumber = Math.sqrt(number);
+		for (var i = 3; i < number; i+=2) {
+			let breakFlag = false;
+			for (var j = 0; j < primes.length && primes[j] <= sqrtFromNumber; j++) {
+				if (i % primes[j] === 0) {
+					breakFlag = true;
+					break;
+				}
+			}
+			if(!breakFlag) {
+				primes.push(i);
+			}
+		}
+	}
+	getPrimeNumbers(1000);
+	console.log("Все простые до 1000:", primes);
 }
 
 init();
